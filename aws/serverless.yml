@@ -1,0 +1,37 @@
+service:
+  name: change-name
+
+plugins:
+  - serverless-webpack
+  - "@kalarrs/serverless-local-dev-server"
+  - "@kalarrs/serverless-shared-api-gateway"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  profile: change-aws-profile
+  region: us-west-2
+  stage: ${opt:stage, '${self:custom.user}dev'}
+  apiGatewayRestApiName: '${self:provider.stage}-change-api'
+
+  environment:
+    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless-user.yml):environment.CHANGE_VALUE}
+
+functions:
+  changes:
+    handler: src/handler.getChanges
+    events:
+      - http:
+          method: get
+          path: changes
+  change:
+    handler: src/handler.getChange
+    events:
+      - http:
+          method: get
+          path: changes/:changeId
+
+custom:
+  localDevPort: 5000
+  webpackIncludeModules: true
+  user: ${file(../serverless-user.yml):custom.user}

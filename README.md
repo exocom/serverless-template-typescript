@@ -1,0 +1,1 @@
+serverless create --template-url https://github.com/exocom/serverless-template-typescript/tree/master/aws --path myService

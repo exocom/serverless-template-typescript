@@ -1,0 +1,9 @@
+{
+  "name": "projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "serverless": "^1.24.1"
+  }
+}
