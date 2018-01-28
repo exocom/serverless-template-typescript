@@ -1,5 +1,5 @@
 service:
-  name: change-name
+  name: "change-name"
 
 plugins:
   - serverless-webpack
@@ -9,28 +9,47 @@ plugins:
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: change-aws-profile
+  profile: ${file(../serverless-user.yml):provider.profile, "change-aws-profile"}
   region: us-west-2
-  stage: ${opt:stage, '${self:custom.user}dev'}
-  apiGatewayRestApiName: '${self:provider.stage}-change-api'
+  stage: ${opt:stage, "${self:custom.user}dev"}
+  apiGatewayRestApiName: "${self:provider.stage}-change-api"
 
   environment:
-    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless-user.yml):environment.CHANGE_VALUE}
+    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless-user.yml):provider.environment.CHANGE_VALUE}
 
 functions:
-  changes:
+  # list
+  getChanges:
     handler: src/handler.getChanges
     events:
       - http:
           method: get
           path: changes
-  change:
+          cors: true
+  # create
+  postChanges:
+    handler: src/handler.postChanges
+    events:
+      - http:
+          method: post
+          path: changes
+          cors: true
+  # get
+  getChange:
     handler: src/handler.getChange
     events:
       - http:
           method: get
-          path: changes/:changeId
-
+          path: changes/{changeId}
+          cors: true
+  # delete
+  deleteChange:
+    handler: src/handler.deleteChange
+    events:
+      - http:
+          method: delete
+          path: changes/{changeId}
+          cors: true
 custom:
   localDevPort: 5000
   webpackIncludeModules: true
