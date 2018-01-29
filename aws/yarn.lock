@@ -10,9 +10,9 @@
     dotenv "^4.0.0"
     express "^4.16.2"
 
-"@kalarrs/serverless-shared-api-gateway@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-shared-api-gateway/-/serverless-shared-api-gateway-1.0.2.tgz#bfbfe8ba71afc823d5a8311c69a4f620c33be71e"
+"@kalarrs/serverless-shared-api-gateway@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-shared-api-gateway/-/serverless-shared-api-gateway-1.0.3.tgz#33eaf562508c97949d8050d932819c09592210cf"
   dependencies:
     aws-sdk "^2.145.0"
     dotenv "^4.0.0"
