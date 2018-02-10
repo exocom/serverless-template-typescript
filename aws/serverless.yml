@@ -11,7 +11,7 @@ provider:
   runtime: nodejs6.10
   profile: ${file(../serverless-user.yml):provider.profile, "change-aws-profile"}
   region: us-west-2
-  stage: ${opt:stage, ${self:custom.user}}
+  stage: ${opt:stage, "${self:custom.user}"}
   apiGatewayRestApiName: ${opt:apiGateway, "${self:provider.stage}-change-api"}
 
   environment:
