@@ -9,13 +9,13 @@ plugins:
 provider:
   name: aws
   runtime: nodejs6.10
-  profile: ${file(../serverless-user.yml):provider.profile, "change-aws-profile"}
-  region: us-west-2
-  stage: ${opt:stage, "${self:custom.user}"}
-  apiGatewayRestApiName: ${opt:apiGateway, "${self:provider.stage}-change-api"}
+  profile: ${file(../serverless.yml):provider.profile}
+  region: ${file(../serverless.yml):provider.region}
+  stage: ${file(../serverless.yml):provider.stage}
+  apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
 
   environment:
-    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless-user.yml):provider.environment.CHANGE_VALUE}
+    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
 
 functions:
   # list
@@ -51,6 +51,8 @@ functions:
           path: changes/{changeId}
           cors: true
 custom:
+  user: ${file(../serverless.yml):custom.user}
   localDevPort: 5000
-  webpackIncludeModules: true
-  user: ${file(../serverless-user.yml):custom.user}
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true

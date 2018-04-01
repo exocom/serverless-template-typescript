@@ -1,9 +1,8 @@
 {
-  "name": "projects",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "serverless": "^1.24.1"
+  "devDependencies": {
+    "@kalarrs/serverless-domain-manager": "^2.4.0",
+    "@kalarrs/serverless-project-utils": "^1.1.1",
+    "@kalarrs/serverless-shared-api-gateway": "^1.0.7",
+    "serverless": "^1.26.1"
   }
 }
