@@ -18,6 +18,9 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
-    "bson": "^1.0.4"
+    "@types/aws-lambda": "^8.10.3",
+    "bson": "^1.0.4",
+    "class-transformer": "^0.1.9",
+    "class-validator": "^0.8.5"
   }
 }

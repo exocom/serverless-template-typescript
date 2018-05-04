@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": [ "es2015"],
-    "sourceMap": true
+    "sourceMap": true,
+    "experimentalDecorators": true
   }
 }
