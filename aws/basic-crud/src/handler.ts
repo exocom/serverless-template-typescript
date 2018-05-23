@@ -1,28 +1,20 @@
 import {ObjectId} from 'bson';
 import {ApiBody, ApiGatewayUtil, Handler} from './utils/routes';
 import {APIGatewayProxyEvent} from 'aws-lambda';
-import {deserialize} from 'class-transformer';
+import {deserialize, Transform, Type} from 'class-transformer';
 import {IsMongoId, Length, validate} from 'class-validator';
-
-let changes = [
-  {
-    id: ObjectId('5a1b5ae36758c40453e5e024'),
-    description: 'This is an example'
-  },
-  {
-    id: ObjectId('5a1b5b176758c40453e5e025'),
-    description: 'of a simple mock API'
-  }
-];
 
 const apiGatewayUtil = new ApiGatewayUtil();
 
+
+
 export const getChanges = async (event, context, cb) => {
+
   apiGatewayUtil.sendResponse({cb, statusCode: 200, body: {data: changes}});
 };
 
 class Change {
-  @IsMongoId()
+  @Transform(value => ObjectId(value), { toClassOnly: true })
   id: ObjectId;
 
   @Length(5, 250)
@@ -32,9 +24,12 @@ class Change {
 export const postChanges: Handler<APIGatewayProxyEvent, ApiBody<Change>> = async (event, context, cb) => {
   try {
     const body = deserialize(Change, event.body);
-    const errors = await validate(body);
+    console.log(body.id instanceof ObjectId);
 
-    if (errors) {
+    //const errors = await validate(body);
+
+    const errors = [];
+    if (errors && errors.length) {
       apiGatewayUtil.sendResponse({cb, statusCode: 400, body: {errors}});
       return;
     }
