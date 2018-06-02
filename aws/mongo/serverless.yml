@@ -1,0 +1,58 @@
+service:
+  name: "demo-mongo"
+
+plugins:
+  - serverless-webpack
+  - "@kalarrs/serverless-local-dev-server"
+  - "@kalarrs/serverless-shared-api-gateway"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: ${file(../serverless.yml):provider.profile}
+  region: ${file(../serverless.yml):provider.region}
+  stage: ${file(../serverless.yml):provider.stage}
+  apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
+
+  environment:
+    MONGODB_URI: ${env:MONGODB_URI, file(../serverless.yml):provider.environment.MONGODB_URI}
+
+functions:
+  # list
+  getUsers:
+    handler: src/handler.getUsers
+    events:
+      - http:
+          method: get
+          path: users
+          cors: true
+  # create
+  postUsers:
+    handler: src/handler.postUsers
+    events:
+      - http:
+          method: post
+          path: users
+          cors: true
+  # get
+  getUser:
+    handler: src/handler.getUser
+    events:
+      - http:
+          method: get
+          path: users/{userId}
+          cors: true
+  # delete
+  deleteUser:
+    handler: src/handler.deleteUser
+    events:
+      - http:
+          method: delete
+          path: users/{userId}
+          cors: true
+custom:
+  user: ${file(../serverless.yml):custom.user}
+  localDevPort: 5000
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true
