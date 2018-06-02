@@ -2,17 +2,6 @@ import {Transform} from 'class-transformer';
 import {IsEmail, IsUrl, Length, Min, ValidateNested} from 'class-validator';
 import {ObjectId} from 'bson';
 
-export class UserCreateRequest {
-  @Length(5, 250)
-  password: string;
-
-  @IsEmail()
-  email: string;
-
-  @ValidateNested()
-  profile: UserProfileCreateRequest;
-}
-
 export class UserProfileCreateRequest {
   name: string;
   gender: string;
@@ -23,6 +12,17 @@ export class UserProfileCreateRequest {
 
   @IsUrl()
   picture: string;
+}
+
+export class UserCreateRequest {
+  @Length(5, 250)
+  password: string;
+
+  @IsEmail()
+  email: string;
+
+  @ValidateNested()
+  profile: UserProfileCreateRequest;
 }
 
 
