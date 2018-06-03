@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
   }
 }, {timestamps: true});
 
+userSchema.virtual('id').get(() => this._id);
+
 userSchema.set('toJSON', {
   transform: (doc, ret, options) => {
     ret = transformId(doc, ret, options);
