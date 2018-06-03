@@ -25,6 +25,11 @@ export class UserCreateRequest {
   profile: UserProfileCreateRequest;
 }
 
+export class UserGetParamsRequest {
+  @Transform(value => ObjectId(value), {toClassOnly: true})
+  userId: ObjectId;
+}
+
 
 export class UserUpdateRequest {
   @Transform(value => ObjectId(value), {toClassOnly: true})
