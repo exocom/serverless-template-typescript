@@ -45,7 +45,7 @@ export const getUser: ApiGatewayHandler = async (event, context) => {
   const errors = await validate(pathParameters);
   if (errors && errors.length) return apiGatewayUtil.apiResponse({statusCode: 400, body: {errors}});
 
-  const user = await MongooseUser.findOne<UserDocument>(c => c.id === pathParameters.userId).exec();
+  const user = await MongooseUser.findById<UserDocument>(pathParameters.userId).exec();
   if (!user) {
     const errors = [{
       type: 'ApiError',

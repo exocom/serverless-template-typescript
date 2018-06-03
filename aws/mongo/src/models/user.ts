@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt-nodejs";
 import crypto from "crypto";
 import mongoose from "mongoose";
+import {ObjectId} from 'bson';
 
 export type comparePasswordFunction = (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
 
@@ -10,6 +11,7 @@ export type AuthToken = {
 };
 
 export class User {
+  id: ObjectId;
   email: string;
   password: string;
   passwordResetToken: string;
