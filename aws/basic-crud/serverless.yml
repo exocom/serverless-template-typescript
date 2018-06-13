@@ -1,5 +1,4 @@
-service:
-  name: "change-name"
+service: "change-name"
 
 plugins:
   - serverless-webpack
