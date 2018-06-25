@@ -1,4 +1,4 @@
-service: "change-name"
+service: "basic-crud"
 
 plugins:
   - serverless-webpack
