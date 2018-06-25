@@ -1,5 +1,5 @@
 service:
-  name: "change-name"
+  name: "demo-mongo"
 
 plugins:
   - serverless-webpack
@@ -8,47 +8,47 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
   apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
 
   environment:
-    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
+    MONGODB_URI: ${env:MONGODB_URI, file(../serverless.yml):provider.environment.MONGODB_URI}
 
 functions:
   # list
-  getChanges:
-    handler: src/handler.getChanges
+  getUsers:
+    handler: src/handler.getUsers
     events:
       - http:
           method: get
-          path: changes
+          path: users
           cors: true
   # create
-  postChanges:
-    handler: src/handler.postChanges
+  postUsers:
+    handler: src/handler.postUsers
     events:
       - http:
           method: post
-          path: changes
+          path: users
           cors: true
   # get
-  getChange:
-    handler: src/handler.getChange
+  getUser:
+    handler: src/handler.getUser
     events:
       - http:
           method: get
-          path: changes/{changeId}
+          path: users/{userId}
           cors: true
   # delete
-  deleteChange:
-    handler: src/handler.deleteChange
+  deleteUser:
+    handler: src/handler.deleteUser
     events:
       - http:
           method: delete
-          path: changes/{changeId}
+          path: users/{userId}
           cors: true
 custom:
   user: ${file(../serverless.yml):custom.user}

@@ -6,6 +6,12 @@
         <entryData>
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/src" />
+            <path value="file://$PROJECT_DIR$/aws/mongo/src" />
+            <path value="file://$PROJECT_DIR$/aws/basic-crud" />
+            <path value="file://$PROJECT_DIR$/aws/basic-event" />
+            <path value="file://$PROJECT_DIR$/aws/mongo" />
+            <path value="file://$PROJECT_DIR$/aws/basic-crud/src" />
+            <path value="file://$PROJECT_DIR$/aws/basic-event/src" />
           </resourceRoots>
         </entryData>
       </entry>

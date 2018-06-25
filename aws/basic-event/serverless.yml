@@ -1,0 +1,29 @@
+service:
+  name: "basic-event"
+
+plugins:
+  - serverless-webpack
+  - "@kalarrs/serverless-local-dev-server"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: ${file(../serverless.yml):provider.profile}
+  region: ${file(../serverless.yml):provider.region}
+  stage: ${file(../serverless.yml):provider.stage}
+
+  environment:
+      MONGODB_URI: ${env:MONGODB_URI, file(../serverless.yml):provider.environment.MONGODB_URI}
+
+functions:
+  newUsers:
+    handler: src/handler.newUsers
+    events:
+      - schedule: rate(1 day)
+
+custom:
+  user: ${file(../serverless.yml):custom.user}
+  localDevPort: 5000
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true

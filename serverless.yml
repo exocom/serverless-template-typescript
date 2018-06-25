@@ -12,7 +12,7 @@ provider:
 plugins:
   - "@kalarrs/serverless-shared-api-gateway"
   - "@kalarrs/serverless-domain-manager"
-  - "@kalarrs/serverless-project-utils"
+  - "@kalarrs/serverless-workspace-utils"
 
 custom:
   user: ${file(serverless-user.yml):custom.user, file(../serverless-user.yml):custom.user}

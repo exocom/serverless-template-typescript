@@ -9,17 +9,6 @@
     aws-sdk "^2.177.0"
     chalk "^2.0.1"
 
-"@kalarrs/serverless-project-utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-project-utils/-/serverless-project-utils-1.1.1.tgz#95bb1a34da63ffd47e8963399e9764e0f5b20621"
-  dependencies:
-    gulp "^4.0.0"
-    http-proxy "^1.16.2"
-    path-to-regexp "^2.1.0"
-    stream-to-promise "^2.2.0"
-    through2 "^2.0.3"
-    vinyl-yaml-data "^2.0.1"
-
 "@kalarrs/serverless-shared-api-gateway@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@kalarrs/serverless-shared-api-gateway/-/serverless-shared-api-gateway-1.0.7.tgz#3a59d240fa25bb46760fa8caa77685353ce23987"
@@ -27,6 +16,17 @@
     aws-sdk "^2.145.0"
     chalk "^2.3.2"
     dotenv "^4.0.0"
+
+"@kalarrs/serverless-workspace-utils@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-workspace-utils/-/serverless-workspace-utils-1.0.0.tgz#e2c28b44ef43614cc55d4017e85bef418ea8b4b4"
+  dependencies:
+    gulp "^4.0.0"
+    http-proxy "^1.16.2"
+    path-to-regexp "^2.1.0"
+    stream-to-promise "^2.2.0"
+    through2 "^2.0.3"
+    vinyl-yaml-data "^2.0.1"
 
 "@serverless/fdk@^0.5.1":
   version "0.5.1"
