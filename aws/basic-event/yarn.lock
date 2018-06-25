@@ -2,11 +2,12 @@
 # yarn lockfile v1
 
 
-"@kalarrs/serverless-local-dev-server@^1.0.0-beta.9":
-  version "1.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.0.0-beta.9.tgz#aabe819cb258b6bff791983fae101fe570523755"
+"@kalarrs/serverless-local-dev-server@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.0.tgz#402aa8a57d889894da97f7405c59ac59c2b1500b"
   dependencies:
     body-parser "^1.18.2"
+    cronstrue "^1.31.0"
     dotenv "^4.0.0"
     express "^4.16.2"
 
@@ -630,6 +631,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+cronstrue@^1.31.0:
+  version "1.31.0"
+  resolved "https://registry.yarnpkg.com/cronstrue/-/cronstrue-1.31.0.tgz#fd3db94b52c296550a5f53efe04691a1380e294d"
 
 cross-spawn@^5.0.1:
   version "5.1.0"

@@ -10,6 +10,7 @@ export const newUsers: ScheduleEventHandler = async () => {
   const yesterday = moment().subtract(24, 'hours').toDate();
   const newUsers = await client.db().collection('users').count({createdAt: {$gt: yesterday}});
 
-  console.log(`${newUsers} new users accounts create in the last 24 hours`);
+  const message = `${newUsers} new users accounts create in the last 24 hours`;
+  console.log(message); // This is here so that it will show up in cloud watch logs.
+  return message;
 };
-
