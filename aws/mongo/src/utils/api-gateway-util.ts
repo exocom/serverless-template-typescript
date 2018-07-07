@@ -1,28 +1,37 @@
-import {APIGatewayEvent, APIGatewayProxyResult, Context} from 'aws-lambda';
+import {APIGatewayEvent, APIGatewayProxyResult, Context, ScheduledEvent} from 'aws-lambda';
 
 type headers = {
   [header: string]: boolean | number | string;
-}
+};
 
-export class ApiGatewayUtil {
+export type lambdaUtilOptions = {
+  headers?: headers;
+};
+
+export class LambdaUtil {
   private _headers: headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
     'Content-Type': 'application/json'
   };
 
-  constructor(headers = null) {
+  constructor({headers}: lambdaUtilOptions = {}) {
     if (headers) this._headers = headers;
   }
 
   apiResponse<T>({statusCode = 200, body = null, headers = this._headers}: ApiResponse<T>): APIGatewayProxyResult {
     return {
       statusCode,
-      body: body ? JSON.stringify(body) : null,
+      body: body ? JSON.stringify(body) : "",
       headers
     };
   }
 }
+
+export type ScheduleEventHandler = (
+  event: ScheduledEvent,
+  context: Context
+) => void;
 
 export type ApiGatewayHandler = (
   event: APIGatewayEvent,
@@ -35,16 +44,15 @@ interface ApiResponse<T> {
   headers?: headers;
 }
 
-export class ApiBody<T> {
+export interface ApiBody<T> {
   data: T;
   meta?: Meta;
 }
 
-export class ApiErrorsBody<T> {
+export interface ApiErrorsBody<T> {
   errors: Array<T>;
   meta?: Meta;
 }
-
 
 export interface Meta {
 }

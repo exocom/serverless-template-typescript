@@ -1,5 +1,4 @@
-service:
-  name: "demo-mongo"
+service: "mongo-api-typescript"
 
 plugins:
   - serverless-webpack
@@ -24,7 +23,7 @@ functions:
     events:
       - http:
           method: get
-          path: users
+          path: typescript/users
           cors: true
   # create
   postUsers:
@@ -32,7 +31,7 @@ functions:
     events:
       - http:
           method: post
-          path: users
+          path: typescript/users
           cors: true
   # get
   getUser:
@@ -40,7 +39,7 @@ functions:
     events:
       - http:
           method: get
-          path: users/{userId}
+          path: typescript/users/{userId}
           cors: true
   # delete
   deleteUser:
@@ -48,11 +47,11 @@ functions:
     events:
       - http:
           method: delete
-          path: users/{userId}
+          path: typescript/users/{userId}
           cors: true
 custom:
   user: ${file(../serverless.yml):custom.user}
-  localDevPort: 5000
+  localDevPort: 5002
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true

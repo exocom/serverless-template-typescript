@@ -1,6 +1,6 @@
 provider:
   environment:
-    CHANGE_VALUE: "change-dev"
+    CHANGE_VALUE: "foo"
 
 custom:
   customDomain:

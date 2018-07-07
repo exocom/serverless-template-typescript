@@ -2,5 +2,8 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{tsconfig$roots}" />
+    <excludedPredefinedLibrary name="serverless-template-typescript/aws/basic-crud-api/node_modules" />
+    <excludedPredefinedLibrary name="serverless-template-typescript/aws/mongo-api/.webpack/dependencies/node_modules" />
+    <excludedPredefinedLibrary name="serverless-template-typescript/aws/mongo-api/.webpack/service/node_modules" />
   </component>
 </project>
