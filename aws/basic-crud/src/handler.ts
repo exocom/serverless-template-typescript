@@ -6,15 +6,23 @@ import {IsMongoId, Length, validate} from 'class-validator';
 
 const apiGatewayUtil = new ApiGatewayUtil();
 
-
+const changes = [
+  {
+    id: ObjectId('5a1b5ae36758c40453e5e024'),
+    description: 'This is an example'
+  },
+  {
+    id: ObjectId('5a1b5b176758c40453e5e025'),
+    description: 'Of a simple mock API'
+  }
+];
 
 export const getChanges = async (event, context, cb) => {
-
   apiGatewayUtil.sendResponse({cb, statusCode: 200, body: {data: changes}});
 };
 
 class Change {
-  @Transform(value => ObjectId(value), { toClassOnly: true })
+  @Transform(value => ObjectId(value), {toClassOnly: true})
   id: ObjectId;
 
   @Length(5, 250)
@@ -24,11 +32,8 @@ class Change {
 export const postChanges: Handler<APIGatewayProxyEvent, ApiBody<Change>> = async (event, context, cb) => {
   try {
     const body = deserialize(Change, event.body);
-    console.log(body.id instanceof ObjectId);
+    const errors = await validate(body);
 
-    //const errors = await validate(body);
-
-    const errors = [];
     if (errors && errors.length) {
       apiGatewayUtil.sendResponse({cb, statusCode: 400, body: {errors}});
       return;
@@ -64,72 +69,48 @@ export const postChanges: Handler<APIGatewayProxyEvent, ApiBody<Change>> = async
 export const getChange = async (event, context, cb) => {
   const changeId = event && event.pathParameters && event.pathParameters.changeId;
   if (!changeId || !ObjectId.isValid(changeId)) {
-    cb(null, {
-      statusCode: 400,
-      body: JSON.stringify({
-        error: {
-          type: 'ApiError',
-          message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
-        }
-      }),
-    });
+    const error = {
+      type: 'ApiError',
+      message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
+    };
+    apiGatewayUtil.sendResponse({cb, statusCode: 400, body: {error}});
     return;
   }
 
-  const change = changes.find(c => c.id === event.pathParameters.changeId);
+  const change = changes.find(c => c.id.equals(event.pathParameters.changeId));
   if (!change) {
-    cb(null, {
-      statusCode: 404,
-      body: JSON.stringify({
-        error: {
-          type: 'ApiError',
-          message: 'No change was found with the given id.'
-        }
-      }),
-    });
+    const error = {
+      type: 'ApiError',
+      message: 'No change was found with the given id.'
+    };
+    apiGatewayUtil.sendResponse({cb, statusCode: 404, body: {error}});
     return;
   }
 
-  cb(null, {
-    statusCode: 200,
-    body: JSON.stringify({
-      data: change
-    }),
-  });
+  apiGatewayUtil.sendResponse({cb, statusCode: 200, body: {data: change}});
 };
 
 export const deleteChange = async (event, context, cb) => {
   const changeId = event && event.pathParameters && event.pathParameters.changeId;
   if (!changeId || !ObjectId.isValid(changeId)) {
-    cb(null, {
-      statusCode: 400,
-      body: JSON.stringify({
-        error: {
-          type: 'ApiError',
-          message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
-        }
-      }),
-    });
+    const error = {
+      type: 'ApiError',
+      message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
+    };
+    apiGatewayUtil.sendResponse({cb, statusCode: 400, body: {error}});
     return;
   }
 
-  const change = changes.find(c => c.id === event.pathParameters.changeId);
+  const change = changes.find(c => c.id.equals(event.pathParameters.changeId));
   if (!change) {
-    cb(null, {
-      statusCode: 404,
-      body: JSON.stringify({
-        error: {
-          type: 'ApiError',
-          message: 'No change was found with the given id.'
-        }
-      }),
-    });
+    const error = {
+      type: 'ApiError',
+      message: 'No change was found with the given id.'
+    };
+    apiGatewayUtil.sendResponse({cb, statusCode: 404, body: {error}});
     return;
   }
 
   changes.splice(changes.indexOf(change), 1);
-
-  cb(null, {
-    statusCode: 204,
-  });
+  apiGatewayUtil.sendResponse({cb, statusCode: 204, body: null});
 };
