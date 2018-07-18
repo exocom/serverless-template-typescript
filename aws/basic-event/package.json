@@ -1,5 +1,5 @@
 {
-  "name": "basic-event",
+  "name": "basic-event-typescript",
   "private": true,
   "version": "1.0.0",
   "main": "handler.js",

@@ -51,7 +51,7 @@ functions:
           cors: true
 custom:
   user: ${file(../serverless.yml):custom.user}
-  localDevPort: 5002
+  localDevPort: 5003
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true
