@@ -18,7 +18,7 @@ export const postSpeech = async (event, context) => {
     SampleRate: '8000',
     Text: 'Hey kalarrs! How are you?',
     TextType: 'text',
-    VoiceId: 'Joanna'
+    VoiceId: 'Kimberly'
   }).promise();
 
   return lambdaUtil.apiResponseBinary({

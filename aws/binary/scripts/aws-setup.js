@@ -19,7 +19,7 @@ class AwsSetup {
       xml:lang="en-US">
   <lexeme>
     <grapheme>kalarrs</grapheme>
-    <phoneme>kælɑ:rs</phoneme>
+    <phoneme>kælɑrs</phoneme>
   </lexeme>
 </lexicon>`,
       Name: 'kalarrs'
