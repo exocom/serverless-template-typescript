@@ -23,7 +23,7 @@ functions:
 
 custom:
   user: ${file(../serverless.yml):custom.user}
-  localDevPort: 5000
+  localDevPort: 5001
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true
