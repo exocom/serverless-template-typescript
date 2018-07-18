@@ -4,12 +4,14 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/aws/basic-crud/node_modules" />
         <item url="file://$PROJECT_DIR$/aws/basic-event/node_modules" />
+        <item url="file://$PROJECT_DIR$/aws/binary/node_modules" />
         <item url="file://$PROJECT_DIR$/aws/mongo/node_modules" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/aws/basic-crud/node_modules" />
       <root url="file://$PROJECT_DIR$/aws/basic-event/node_modules" />
+      <root url="file://$PROJECT_DIR$/aws/binary/node_modules" />
       <root url="file://$PROJECT_DIR$/aws/mongo/node_modules" />
     </CLASSES>
     <SOURCES />
