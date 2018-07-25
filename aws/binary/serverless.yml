@@ -1,9 +1,9 @@
-service:
-  name: "basic-event-typescript"
+service: "binary-api-typescript"
 
 plugins:
   - serverless-webpack
   - "@kalarrs/serverless-local-dev-server"
+  - "@kalarrs/serverless-shared-api-gateway"
 
 provider:
   name: aws
@@ -11,19 +11,25 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
+  apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
 
-  environment:
-      MONGODB_URI: ${env:MONGODB_URI, file(../serverless.yml):provider.environment.MONGODB_URI}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "polly:SynthesizeSpeech"
+      Resource: "*"
 
 functions:
-  newUsers:
-    handler: src/handler.newUsers
+  postSpeech:
+    handler: src/handler.postSpeech
     events:
-      - schedule: rate(1 day)
-
+      - http:
+          method: get
+          path: typescript/speech
+          cors: true
 custom:
   user: ${file(../serverless.yml):custom.user}
-  localDevPort: 5001
+  localDevPort: 5002
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true

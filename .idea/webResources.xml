@@ -12,6 +12,8 @@
             <path value="file://$PROJECT_DIR$/aws/mongo" />
             <path value="file://$PROJECT_DIR$/aws/basic-crud/src" />
             <path value="file://$PROJECT_DIR$/aws/basic-event/src" />
+            <path value="file://$PROJECT_DIR$/aws/binary" />
+            <path value="file://$PROJECT_DIR$/aws/binary/src" />
           </resourceRoots>
         </entryData>
       </entry>

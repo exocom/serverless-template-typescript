@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.7",
+    "@types/node": "^10.5.2",
+    "typescript": "^2.9.2"
+  }
+}
