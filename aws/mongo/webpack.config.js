@@ -5,6 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
+  mode: process.env.SLS_DEBUG ? 'development'  : 'production',
   entry: slsw.lib.entries,
   output: {
     libraryTarget: 'commonjs',
@@ -16,7 +17,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   module: {
-    loaders: [
+    rules: [
       {test: /\.ts(x?)$/, loader: 'ts-loader'},
     ],
   },

@@ -1,8 +1,8 @@
 const AWS = require('aws-sdk');
 
-const credentials = new AWS.SharedIniFileCredentials({profile: 'kalarrs'});
+const credentials = new AWS.SharedIniFileCredentials({profile: 'change-profile'});
 AWS.config.credentials = credentials;
-AWS.config.update({region:'us-west-2'});
+AWS.config.update({region: 'us-west-2'});
 
 const polly = new AWS.Polly();
 
@@ -19,14 +19,14 @@ class AwsSetup {
       xml:lang="en-US">
   <lexeme>
     <grapheme>kalarrs</grapheme>
-    <phoneme>kælɑrs</phoneme>
+    <phoneme>kɑ:l~ɑrs</phoneme>
   </lexeme>
 </lexicon>`,
       Name: 'kalarrs'
     }).promise();
   }
 
-  getLexicons () {
+  getLexicons() {
     return polly.getLexicon({Name: 'kalarrs'}).promise();
   }
 
@@ -34,24 +34,19 @@ class AwsSetup {
     await this.loadLexicons();
   }
 
-  async check(){
+  async check() {
     let lexicons = await this.getLexicons();
     console.log(lexicons);
   }
 }
 
-const setup = false;
 
 const awsSetup = new AwsSetup();
 
-if (setup) {
-  awsSetup.init()
-    .then(() => {
-      console.log('Success')
-    })
-    .catch(e => {
-      console.log('Error', e)
-    });
-} else {
-  awsSetup.check();
-}
+awsSetup.init()
+  .then(() => {
+    console.log('Success')
+  })
+  .catch(e => {
+    console.log('Error', e)
+  });
