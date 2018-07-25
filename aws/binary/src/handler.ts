@@ -1,5 +1,5 @@
 import AWS = require('aws-sdk');
-import {LambdaUtil} from '../../libs/lambda-util';
+import {LambdaUtil} from '../../libs/lambda-util/lambda-util';
 
 
 const lambdaUtil = new LambdaUtil();

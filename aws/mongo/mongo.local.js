@@ -10,10 +10,9 @@ function getProcessedInput(plugin) {
 process.env.SLS_DEBUG = 'true';
 
 const serverless = new Serverless();
-serverless.init().then(function () {
+serverless.init().then(async () => {
   serverless.processedInput = getProcessedInput('webpack');
-  serverless.run().then(() => {
-    serverless.processedInput = getProcessedInput('local-dev-server');
-    serverless.run();
-  });
+  await serverless.run();
+  serverless.processedInput = getProcessedInput('local-dev-server');
+  await serverless.run();
 });
