@@ -1,7 +1,8 @@
 {
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.7",
-    "@types/node": "^10.5.2",
-    "typescript": "^2.9.2"
+    "@kalarrs/serverless-domain-manager": "^2.4.0",
+    "@kalarrs/serverless-shared-api-gateway": "^1.0.8",
+    "@kalarrs/serverless-workspace-utils": "^1.0.0",
+    "serverless": "^1.28.0"
   }
 }
