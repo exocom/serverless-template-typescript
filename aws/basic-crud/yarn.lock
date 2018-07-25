@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@kalarrs/serverless-local-dev-server@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.1.tgz#7c5a8d41218710a5985868764d8037eefb0fae54"
+"@kalarrs/serverless-local-dev-server@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.2.tgz#a1aaae8baf70cb9b108a9e44491a8621a9f21cfd"
   dependencies:
     body-parser "^1.18.2"
     cronstrue "^1.31.0"

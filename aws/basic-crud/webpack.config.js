@@ -5,6 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
+  mode: process.env.SLS_DEBUG ? 'development'  : 'production',
   entry: slsw.lib.entries,
   output: {
     libraryTarget: 'commonjs',
