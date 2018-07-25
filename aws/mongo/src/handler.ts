@@ -1,6 +1,6 @@
 import {ObjectId} from 'bson';
 import mongoose from 'mongoose';
-import {ApiGatewayHandler, LambdaUtil} from '../../libs/lambda-util';
+import {ApiGatewayHandler, LambdaUtil} from '../../libs/lambda-util/lambda-util';
 import {default as MongooseUser, UserDocument} from './models/mongoose/mongoose-user';
 import {deserialize, plainToClass} from 'class-transformer';
 import {UserCreateRequest, UserGetParamsRequest} from './models/requests/user.request';
