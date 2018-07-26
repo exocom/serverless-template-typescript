@@ -27,7 +27,6 @@ functions:
           method: get
           path: typescript/speech
           cors: true
-          contentHandling: CONVERT_TO_BINARY
 
 custom:
   user: ${file(../serverless.yml):custom.user}

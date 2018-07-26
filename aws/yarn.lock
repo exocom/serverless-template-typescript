@@ -15,9 +15,9 @@
   dependencies:
     chalk "^2.3.2"
 
-"@kalarrs/serverless-workspace-utils@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-workspace-utils/-/serverless-workspace-utils-1.0.0.tgz#e2c28b44ef43614cc55d4017e85bef418ea8b4b4"
+"@kalarrs/serverless-workspace-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-workspace-utils/-/serverless-workspace-utils-1.0.1.tgz#43e129cd833f9ddd14788fc88eb655d5651bacba"
   dependencies:
     gulp "^4.0.0"
     http-proxy "^1.16.2"
