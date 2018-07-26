@@ -4,6 +4,7 @@ plugins:
   - serverless-webpack
   - "@kalarrs/serverless-local-dev-server"
   - "@kalarrs/serverless-shared-api-gateway"
+  - serverless-apigwy-binary
 
 provider:
   name: aws
@@ -27,6 +28,8 @@ functions:
           method: get
           path: typescript/speech
           cors: true
+          contentHandling: CONVERT_TO_BINARY
+
 custom:
   user: ${file(../serverless.yml):custom.user}
   localDevPort: 5002
