@@ -4,7 +4,6 @@ plugins:
   - serverless-webpack
   - "@kalarrs/serverless-local-dev-server"
   - "@kalarrs/serverless-shared-api-gateway"
-  - serverless-apigwy-binary
 
 provider:
   name: aws
