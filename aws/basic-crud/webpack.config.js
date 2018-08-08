@@ -13,6 +13,7 @@ module.exports = {
     filename: '[name].js',
   },
   target: 'node',
+  // node: { __dirname: false}, // Uncomment - If you want to access files on lambda via path.
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
   },
