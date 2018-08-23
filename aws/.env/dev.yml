@@ -8,7 +8,10 @@ custom:
     name: "change"
     description: "Development API for change.com"
     customDomain:
-      name: "dev.change.com"
-      # certificateName: "*.change.com"
+      domainName: "dev.change.com"
+      hostedZone:
+        domainName: "change.com"
+        #id: "abc123"
       certificateArn: arn:aws:acm:us-east-1:::certificate/12345
+      # certificateName: "*.change.com"
       basePathMapping: ""

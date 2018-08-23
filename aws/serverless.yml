@@ -7,9 +7,12 @@ service:
 
 resources:
   Parameters:
-    domainName:
+    hostedZoneDomainName:
       Type: String
-      Default: ${file(../.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.name, file(.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.name}
+      Default: ${file(../.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.hostedZone.domainName, file(.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.hostedZone.domainName}
+    customDomainName:
+      Type: String
+      Default: ${file(../.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.domainName, file(.env/${self:provider.stage}.yml):custom.apiGateway.customDomain.domainName}
     restApiName:
       Type: String
       Default: "api-${file(../.env/${self:provider.stage}.yml):custom.apiGateway.name, file(.env/${self:provider.stage}.yml):custom.apiGateway.name}-${self:provider.stage}"
@@ -73,7 +76,7 @@ resources:
         CertificateArn:
           Ref: certificateArn
         DomainName:
-          Ref: domainName
+          Ref: customDomainName
 
     BasePathMapping:
       Type: AWS::ApiGateway::BasePathMapping
@@ -90,19 +93,27 @@ resources:
       Type: AWS::Route53::RecordSet
       DependsOn: BasePathMapping
       Properties:
-        HostedZoneName: 'kalarrs.com.'
-        Name: 'dev.kalarrs.com.'
+        HostedZoneName:
+          Fn::Join:
+          - ""
+          - - Ref: hostedZoneDomainName
+            - "."
+        Name:
+          Fn::Join:
+          - ""
+          - - Ref: customDomainName
+            - "."
         Type: CNAME
         TTL: 300
         ResourceRecords:
-          - Fn::GetAtt: DomainName.DistributionDomainName
+        - Fn::GetAtt: DomainName.DistributionDomainName
 
   #    NOTE : You'll need to respond to the Cert Email request.
   #    Certificate:
   #      Type: 'AWS::CertificateManager::Certificate'
   #      Properties:
   #        DomainName:
-  #          Ref: domainName
+  #          Ref: customDomainName
 
 
   Outputs:
