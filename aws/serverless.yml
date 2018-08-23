@@ -76,7 +76,7 @@ resources:
           Ref: domainName
 
     BasePathMapping:
-      Type: 'AWS::ApiGateway::BasePathMapping'
+      Type: AWS::ApiGateway::BasePathMapping
       Properties:
         BasePath:
           Ref: basePath
@@ -85,6 +85,17 @@ resources:
         RestApiId:
           Ref: WorkspaceRestApi
         Stage: ${self:provider.stage}
+
+    DNSRecord:
+      Type: AWS::Route53::RecordSet
+      DependsOn: BasePathMapping
+      Properties:
+        HostedZoneName: 'kalarrs.com.'
+        Name: 'dev.kalarrs.com.'
+        Type: CNAME
+        TTL: 300
+        ResourceRecords:
+          - Fn::GetAtt: DomainName.DistributionDomainName
 
   #    NOTE : You'll need to respond to the Cert Email request.
   #    Certificate:
@@ -107,9 +118,7 @@ resources:
 
     apiGatewayRestApiRootResourceId:
       Value:
-        Fn::GetAtt:
-        - WorkspaceRestApi
-        - RootResourceId
+        Fn::GetAtt: WorkspaceRestApi.RootResourceId
       Export:
         Name:
           Fn::Join:
