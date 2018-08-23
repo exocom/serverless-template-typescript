@@ -149,3 +149,4 @@ plugins:
 
 custom:
   user: ${file(serverless-user.yml):custom.user, file(../serverless-user.yml):custom.user}
+  restApiName: "api-${file(../.env/${self:provider.stage}.yml):custom.apiGateway.name, file(.env/${self:provider.stage}.yml):custom.apiGateway.name}-${self:provider.stage}"

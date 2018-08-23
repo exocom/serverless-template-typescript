@@ -1,9 +1,8 @@
 service: "basic-crud-api-typescript"
 
 plugins:
-  - serverless-webpack
-  - "@kalarrs/serverless-local-dev-server"
-  - "@kalarrs/serverless-shared-api-gateway"
+- serverless-webpack
+- "@kalarrs/serverless-local-dev-server"
 
 provider:
   name: aws
@@ -11,7 +10,11 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
-  apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
+  apiGateway:
+    restApiId:
+      'Fn::ImportValue': "${self:custom.restApiName}-restApiId"
+    restApiRootResourceId:
+      'Fn::ImportValue': "${self:custom.restApiName}-rootResourceId"
 
   environment:
     CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
@@ -21,37 +24,38 @@ functions:
   getChanges:
     handler: src/handler.getChanges
     events:
-      - http:
-          method: get
-          path: typescript/changes
-          cors: true
+    - http:
+        method: get
+        path: typescript/changes
+        cors: true
   # create
   postChanges:
     handler: src/handler.postChanges
     events:
-      - http:
-          method: post
-          path: typescript/changes
-          cors: true
+    - http:
+        method: post
+        path: typescript/changes
+        cors: true
   # get
   getChange:
     handler: src/handler.getChange
     events:
-      - http:
-          method: get
-          path: typescript/changes/{changeId}
-          cors: true
+    - http:
+        method: get
+        path: typescript/changes/{changeId}
+        cors: true
   # delete
   deleteChange:
     handler: src/handler.deleteChange
     events:
-      - http:
-          method: delete
-          path: typescript/changes/{changeId}
-          cors: true
+    - http:
+        method: delete
+        path: typescript/changes/{changeId}
+        cors: true
 custom:
   user: ${file(../serverless.yml):custom.user}
   localDevPort: 5000
+  restApiName: ${file(../serverless.yml):custom.restApiName}
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true
