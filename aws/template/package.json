@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "main": "handler.js",
   "scripts": {
+    "deployDev": "sls deploy --stage=dev",
+    "deployProd": "sls deploy --stage=prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

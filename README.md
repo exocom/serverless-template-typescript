@@ -1,5 +1,11 @@
 ## AWS
 
+
+### Generic Templates
+
+Empty
+`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/template --path myService`
+
 ### JSON API
 
 In Memory DB
