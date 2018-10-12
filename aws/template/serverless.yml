@@ -2,6 +2,7 @@ service: "template-typescript"
 
 plugins:
   - serverless-webpack
+  - "@kalarrs/serverless-local-dev-server"
 
 provider:
   name: aws
