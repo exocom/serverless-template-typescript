@@ -1,6 +1,6 @@
-const {LocalServer} = require('local-server');
+const {ServerlessLocalServer} = require('./serverless-local-server');
 
 
-const localServer = new LocalServer();
+const serverlesslocalServer = new ServerlessLocalServer();
 
-localServer.start();
+serverlesslocalServer.start();

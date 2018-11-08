@@ -1,0 +1,9 @@
+{
+  "name": "local-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "gulpjs/gulp#v4.0.0-alpha.3"
+  }
+}
