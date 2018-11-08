@@ -16,6 +16,7 @@
             <path value="file://$PROJECT_DIR$/aws/binary/src" />
             <path value="file://$PROJECT_DIR$/aws/template" />
             <path value="file://$PROJECT_DIR$/aws/libs/lambda-util" />
+            <path value="file://$PROJECT_DIR$/aws/template/src" />
           </resourceRoots>
         </entryData>
       </entry>
