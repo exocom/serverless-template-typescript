@@ -5,8 +5,7 @@ const {exec} = require('child_process');
 const {promisify} = require('util');
 const md5File = require('md5-file/promise');
 const gulp = require('gulp');
-
-//const Server = require('./Server');
+const Server = require('./Server');
 
 
 const child = {
@@ -29,11 +28,23 @@ class ServerlessLocalServer {
     this.paths.slsYaml = path.join(this.paths.project, 'serverless.yml');
     this.paths.slsDir = path.join(this.paths.project, '.serverless');
     this.paths.slsJson = path.join(this.paths.slsDir, 'serverless.json');
+    this.paths.srcDir = path.join(this.paths.project, 'src');
   }
 
   async init() {
     await this.loadServerlessYaml();
-    this.slsYamlWatchStream = gulp.watch(this.paths.slsYaml, () => this.loadServerlessYaml());
+
+    this.server = new Server();
+
+    this.watchStreams = {
+      slsYaml: gulp.watch(this.paths.slsYaml, () => this.loadServerlessYaml()),
+      src: gulp.watch(`${this.paths.srcDir}/**`, () => {
+        // TODO : console.debug stopping because code has changed!
+        // NOTE : could just exit using process.exit(0);
+        this.stop();
+      }),
+      slsJson: gulp.watch(this.paths.slsJson, () => this.processYaml())
+    };
   }
 
   async loadServerlessYaml() {
@@ -53,12 +64,18 @@ class ServerlessLocalServer {
     // TODO : console.debug if flag
   }
 
+  processYaml() {
+    console.log('processing yaml config :)');
+  }
+
   async start() {
     await this.init();
   }
 
   stop() {
-    if (this.slsYamlWatchStream) this.slsYamlWatchStream.close();
+    Object.keys(this.watchStreams).forEach(k => {
+      this.watchStreams[k].close && this.watchStreams[k].close();
+    });
   }
 }
 
