@@ -20,9 +20,12 @@ const fs = {
 class ServerlessLocalServer {
   constructor(options) {
     // TODO : check if project-utils-plugin in in package.json :)
-
+    this.options = {
+      port: 5005,
+      ...options
+    };
     this.paths = {
-      project: options.projectPath || __dirname,
+      project: this.options.projectPath || __dirname,
     };
 
     this.paths.slsYaml = path.join(this.paths.project, 'serverless.yml');
@@ -35,6 +38,16 @@ class ServerlessLocalServer {
     await this.loadServerlessYaml();
 
     this.server = new Server();
+
+    if (this.slsYaml.provider) {
+      if (this.slsYaml.provider.profile) this.server.customEnvironment.AWS_PROFILE = this.slsYaml.provider.profile;
+      if (this.slsYaml.provider.region) this.server.customEnvironment.AWS_REGION = this.slsYaml.provider.region;
+    }
+    this.server.customEnvironment = {
+      ...this.options.environment
+    };
+    this.server.setConfiguration(this.slsYaml, this.paths.project);
+
 
     this.watchStreams = {
       slsYaml: gulp.watch(this.paths.slsYaml, () => this.loadServerlessYaml()),
@@ -70,6 +83,9 @@ class ServerlessLocalServer {
 
   async start() {
     await this.init();
+
+    let customPort = this.slsYaml.custom && this.slsYaml.custom.localDevPort;
+    this.server.start(customPort || this.options.port);
   }
 
   stop() {

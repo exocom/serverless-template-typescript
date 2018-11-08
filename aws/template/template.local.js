@@ -8,6 +8,6 @@ const serverlesslocalServer = new ServerlessLocalServer({
 serverlesslocalServer.start();
 
 
-setTimeout(() => {
-  serverlesslocalServer.stop();
-}, 4000);
+// setTimeout(() => {
+//   serverlesslocalServer.stop();
+// }, 4000);
