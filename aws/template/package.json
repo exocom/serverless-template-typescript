@@ -6,9 +6,11 @@
   "scripts": {
     "deployDev": "sls deploy --stage=dev",
     "deployProd": "sls deploy --stage=prod",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "../node_modules/.bin/tsc -w"
   },
   "devDependencies": {
+    "@kalarrs/serverless-local-dev-server": "https://github.com/kalarrs/serverless-local-dev-server#KAL-80",
     "@kalarrs/serverless-project-utils": "https://github.com/kalarrs/serverless-project-utils#KAL-80",
     "@types/node": "^10.12.3",
     "serverless-webpack": "^5.2.0",
