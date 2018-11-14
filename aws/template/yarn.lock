@@ -2,9 +2,10 @@
 # yarn lockfile v1
 
 
-"@kalarrs/serverless-local-dev-server@https://github.com/kalarrs/serverless-local-dev-server#KAL-80":
-  version "1.1.6"
-  resolved "https://github.com/kalarrs/serverless-local-dev-server#39c470a7c1bbeb23b94a292060e84faf3fc4c8fc"
+"@kalarrs/serverless-local-dev-server@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.7.tgz#350790873f394f18dc7178e681213b31bed3ecd4"
+  integrity sha512-7xiwYAN4tNBCmjY66z33YGT3SeEcEqyp+gmD0Wpk15y8RXtWbAfa+vc+CESWPZmqhIQLG0O2oaMRMO8SUb12ug==
   dependencies:
     body-parser "^1.18.3"
     cronstrue "^1.58.0"
@@ -12,9 +13,10 @@
     express "^4.16.4"
     gulp gulpjs/gulp#v4.0.0-alpha.3
 
-"@kalarrs/serverless-project-utils@https://github.com/kalarrs/serverless-project-utils#KAL-80":
-  version "2.2.0"
-  resolved "https://github.com/kalarrs/serverless-project-utils#7ca668151b7ab620fead0d0107f1a399a24af06d"
+"@kalarrs/serverless-project-utils@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-project-utils/-/serverless-project-utils-2.2.1.tgz#8036d3b3ab3ef3fbafe562847664110b3ecb5935"
+  integrity sha512-5gudtVkbNoNNlStnYKU8bSGPqUhqj0RiF2VMIo0S33douDHsW9VTgaVJzc+fDHbyJHUiWBNnUyHzizVdIhGM3g==
   dependencies:
     cronstrue "^1.31.0"
     md5-file "^4.0.0"

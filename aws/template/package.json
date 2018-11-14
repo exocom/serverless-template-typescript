@@ -10,8 +10,8 @@
     "watch": "../node_modules/.bin/tsc -w"
   },
   "devDependencies": {
-    "@kalarrs/serverless-local-dev-server": "https://github.com/kalarrs/serverless-local-dev-server#KAL-80",
-    "@kalarrs/serverless-project-utils": "https://github.com/kalarrs/serverless-project-utils#KAL-80",
+    "@kalarrs/serverless-local-dev-server": "^1.1.7",
+    "@kalarrs/serverless-project-utils": "^2.2.1",
     "@types/node": "^10.12.3",
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^5.3.0",
