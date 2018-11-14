@@ -38,8 +38,8 @@ export class LambdaUtil {
   }
 }
 
-export type ScheduleEventHandler = (
-  event: ScheduledEvent,
+export type ScheduleEventHandler<T = ScheduledEvent> = (
+  event: T,
   context: Context
 ) => void;
 
