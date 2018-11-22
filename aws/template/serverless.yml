@@ -10,7 +10,15 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
-
+  timeout: 10
+  memorySize: 128
+#  vpc:
+#    securityGroupIds:
+#      - sg-12345678
+#    subnetIds:
+#      - subnet-abcd1234 # (172.31.48.0/20) | us-west-2a
+#      - subnet-efgh1234 # (172.31.16.0/20) | us-west-2b
+#      - subnet-ijkl1234 # (172.31.80.0/20) | us-west-2c
   environment:
 #    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
 
@@ -22,7 +30,7 @@ functions:
 #    Check the event documentation for details
 #    events:
 #      - http:
-#          path: users/create
+#          path: users/{userId}
 #          method: get
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
