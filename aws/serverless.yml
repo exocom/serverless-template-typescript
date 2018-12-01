@@ -14,9 +14,15 @@
     apiGatewayRestApiName: "api-${self:provider.stage}"
 
   plugins:
-    - "@kalarrs/serverless-shared-api-gateway"
-    - "@kalarrs/serverless-domain-manager"
+#    - "@kalarrs/serverless-shared-api-gateway"
+#    - "@kalarrs/serverless-domain-manager"
     - "@kalarrs/serverless-workspace-utils"
+
+  layers:
+    ffmpeg:
+      path: layers/ffmpeg
+    node_modules:
+      path: layers/node_modules
 
   custom:
     user: ${file(serverless-user.yml):custom.user, file(../serverless-user.yml):custom.user}
