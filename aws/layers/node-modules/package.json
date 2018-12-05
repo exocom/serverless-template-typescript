@@ -4,8 +4,7 @@
     "deployDev": "sls deploy --stage=dev",
     "deployProd": "sls deploy --stage=prod"
   },
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "rimraf": "^2.6.2"
   }
 }

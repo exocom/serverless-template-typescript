@@ -13,7 +13,7 @@ provider:
 
 layers:
   node_modules:
-    name: node_modules-${self:provider.stage}
+    name: node-modules-${self:provider.stage}
     path: src
 #    package:
 #      include: src
