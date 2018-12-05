@@ -18,13 +18,6 @@
 #    - "@kalarrs/serverless-domain-manager"
     - "@kalarrs/serverless-workspace-utils"
 
-  layers:
-    ffmpeg:
-      path: layers/ffmpeg
-    node_modules:
-      path: layers/node_modules
-      compatibleRuntimes:
-        - nodejs8.10
 
   custom:
     user: ${file(serverless-user.yml):custom.user, file(../serverless-user.yml):custom.user}

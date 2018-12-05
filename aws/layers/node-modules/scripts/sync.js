@@ -13,7 +13,7 @@ const childProcess = {
 };
 
 const workspacePackage = require('../../../package');
-const srcPackage = require('../src/package');
+const srcPackage = require('../src/nodejs/node8/package');
 
 const rimrafAsync = promisify(rimraf);
 
@@ -22,18 +22,18 @@ const rimrafAsync = promisify(rimraf);
   const nodeModulesDir = path.join(__dirname, '../src/nodejs/node8/node_modules');
   await rimrafAsync(nodeModulesDir);
 
-  console.log('Updating src/package.json');
+  console.log('Updating src/nodejs/node8/package.json');
   let data = {
     ...srcPackage,
     dependencies: workspacePackage.dependencies
   };
-  await fs.writeFile(path.join(__dirname, '../src/package.json'), JSON.stringify(data, null, 2));
+  await fs.writeFile(path.join(__dirname, '../src/nodejs/node8/package.json'), JSON.stringify(data, null, 2));
 
   console.log('Installing node_modules', '$ yarn');
   const i = setInterval(() => {
     process.stdout.write('.');
   }, 250);
-  await childProcess.exec('yarn', {cwd: path.join(__dirname, '../src')});
+  await childProcess.exec('yarn', {cwd: path.join(__dirname, '../src/nodejs/node8')});
   process.stdout.write('\n');
   clearInterval(i);
 })();
