@@ -1,9 +1,9 @@
 import {ObjectId} from 'bson';
-import {LambdaUtil, ApiGatewayHandler} from '../../libs/lambda-util/lambda-util';
+import {ApiGatewayUtil, ApiGatewayHandler} from '@kalarrs/aws-util';
 import {deserialize, Transform} from 'class-transformer';
 import {Length, validate} from 'class-validator';
 
-const lambdaUtil = new LambdaUtil();
+const apiGatewayUtil = new ApiGatewayUtil();
 
 class Change {
   @Transform(value => ObjectId(value), {toClassOnly: true})
@@ -25,22 +25,31 @@ const changes: Array<Change> = [
 ];
 
 export const getChanges: ApiGatewayHandler = async (event, context) => {
-  return lambdaUtil.apiResponseJson({statusCode: 200, body: {data: changes}});
+  return apiGatewayUtil.sendJson({statusCode: 200, body: {data: changes}});
 };
 
 export const postChanges: ApiGatewayHandler = async (event, context) => {
   try {
     const body = deserialize(Change, event.body);
-    const errors = await validate(body);
+    const validationErrors = await validate(body);
 
-    if (errors && errors.length) return lambdaUtil.apiResponseJson({statusCode: 400, body: {errors}});
+    if (validationErrors && validationErrors.length) return apiGatewayUtil.sendJson({
+      statusCode: 400,
+      body: {
+        error: {
+          type: 'ApiError',
+          message: 'Failed validation.',
+          validation: validationErrors
+        }
+      }
+    });
 
     if (changes.find(c => c.id.equals(body.id))) {
-      const errors = [{
+      const error = {
         type: 'ApiError',
         message: 'A change with that Id already exits.'
-      }];
-      return lambdaUtil.apiResponseJson({statusCode: 409, body: {errors}});
+      };
+      return apiGatewayUtil.sendJson({statusCode: 409, body: {error}});
     }
 
     const change = {
@@ -50,58 +59,58 @@ export const postChanges: ApiGatewayHandler = async (event, context) => {
 
     changes.push(change);
 
-    return lambdaUtil.apiResponseJson({statusCode: 201, body: {data: change}});
+    return apiGatewayUtil.sendJson({statusCode: 201, body: {data: change}});
 
   } catch (err) {
-    const errors = [{
+    const error = {
       type: 'ApiError',
       message: err && err.message || err
-    }];
-    return lambdaUtil.apiResponseJson({statusCode: 500, body: {errors}});
+    };
+    return apiGatewayUtil.sendJson({statusCode: 500, body: {error}});
   }
 };
 
 export const getChange: ApiGatewayHandler = async (event, context) => {
   const changeId = event && event.pathParameters && event.pathParameters.changeId;
   if (!changeId || !ObjectId.isValid(changeId)) {
-    const errors = [{
+    const error = {
       type: 'ApiError',
       message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
-    }];
-    return lambdaUtil.apiResponseJson({statusCode: 400, body: {errors}});
+    };
+    return apiGatewayUtil.sendJson({statusCode: 400, body: {error}});
   }
 
   const change = changes.find(c => c.id.equals(event.pathParameters.changeId));
   if (!change) {
-    const errors = [{
+    const error = {
       type: 'ApiError',
       message: 'No change was found with the given id.'
-    }];
-    return lambdaUtil.apiResponseJson({statusCode: 404, body: {errors}});
+    };
+    return apiGatewayUtil.sendJson({statusCode: 404, body: {error}});
   }
 
-  return lambdaUtil.apiResponseJson({statusCode: 200, body: {data: change}});
+  return apiGatewayUtil.sendJson({statusCode: 200, body: {data: change}});
 };
 
 export const deleteChange: ApiGatewayHandler = async (event, context) => {
   const changeId = event && event.pathParameters && event.pathParameters.changeId;
   if (!changeId || !ObjectId.isValid(changeId)) {
-    const errors = [{
+    const error = {
       type: 'ApiError',
       message: 'Invalid id changeId provided. Please provide a valid BSON ObjectID.'
-    }];
-    return lambdaUtil.apiResponseJson({statusCode: 400, body: {errors}});
+    };
+    return apiGatewayUtil.sendJson({statusCode: 400, body: {error}});
   }
 
   const change = changes.find(c => c.id.equals(event.pathParameters.changeId));
   if (!change) {
-    const errors = [{
+    const error = {
       type: 'ApiError',
       message: 'No change was found with the given id.'
-    }];
-    return lambdaUtil.apiResponseJson({statusCode: 404, body: {errors}});
+    };
+    return apiGatewayUtil.sendJson({statusCode: 404, body: {error}});
   }
 
   changes.splice(changes.indexOf(change), 1);
-  return lambdaUtil.apiResponseJson({statusCode: 204, body: null});
+  return apiGatewayUtil.sendJson({statusCode: 204, body: null});
 };

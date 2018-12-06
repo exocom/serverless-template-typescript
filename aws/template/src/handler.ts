@@ -1,5 +1,5 @@
-import {ScheduleEventHandler} from '../../libs/lambda-util/lambda-util';
-import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogsHandler, CognitoUserPoolTriggerHandler} from "../../libs/lambda-util/node_modules/@types/aws-lambda";
+import {ScheduleEventHandler} from '@kalarrs/aws-util';
+import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogsHandler, CognitoUserPoolTriggerHandler} from "aws-lambda";
 
 // export const handler: DynamoDBStreamHandler = async (event, context) => {
 // export const handler: S3Handler = async (event, context) => {
@@ -29,7 +29,7 @@ import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogs
 
 // import {deserialize, plainToClass} from 'class-transformer'; // Recommend
 // import {validate} from 'class-validator';  // Optional
-// import {ApiGatewayHandler, LambdaUtil} from '../../libs/lambda-util/lambda-util';
+// import {ApiGatewayHandler, LambdaUtil} from '@kalarrs/aws-util';
 //
 // const lambdaUtil = new LambdaUtil();
 //
