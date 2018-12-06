@@ -1,8 +1,8 @@
 import AWS = require('aws-sdk');
-import {LambdaUtil} from '../../libs/lambda-util/lambda-util';
+import {ApiGatewayUtil} from '@kalarrs/aws-util';
 
 
-const lambdaUtil = new LambdaUtil();
+const apiGatewayUtil = new ApiGatewayUtil();
 const polly = new AWS.Polly();
 
 export const postSpeech = async (event, context) => {
@@ -21,7 +21,7 @@ export const postSpeech = async (event, context) => {
     VoiceId: 'Kimberly'
   }).promise();
 
-  return lambdaUtil.apiResponseBinary({
+  return apiGatewayUtil.sendBinary({
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
