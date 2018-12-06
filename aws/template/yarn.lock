@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@kalarrs/aws-util@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kalarrs/aws-util/-/aws-util-1.0.0.tgz#5700988f1ef50a6e54b212b3d475f3608520266d"
+  integrity sha512-iZd/6dklxtFif9M9eUkcclG2Tc5NSf4tPIoh1OizO1bnu4snT+0MlnAcZv7UosbzRLKyFN+/X0rpt4upGOUHaw==
+
 "@kalarrs/serverless-local-dev-server@^1.1.7":
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.7.tgz#350790873f394f18dc7178e681213b31bed3ecd4"
@@ -21,6 +26,11 @@
     cronstrue "^1.31.0"
     md5-file "^4.0.0"
     moment "^2.22.2"
+
+"@types/aws-lambda@^8.10.15":
+  version "8.10.15"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.15.tgz#ea7094e9cacbcfa5e1b6b15baa12b7a438857fc7"
+  integrity sha512-C8yoqVslZ0CxQBTsBIBzAlG+JfevToteoJxzqvYSWGUcnw3oBu05Pe2P/I4hg3udR9qpsCJowXA65L9NYnJbrA==
 
 "@types/node@^10.12.3":
   version "10.12.3"
