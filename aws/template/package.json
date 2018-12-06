@@ -12,6 +12,7 @@
   "devDependencies": {
     "@kalarrs/serverless-local-dev-server": "^1.1.7",
     "@kalarrs/serverless-project-utils": "^2.2.1",
+    "@types/aws-lambda": "^8.10.15",
     "@types/node": "^10.12.3",
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^5.3.0",
@@ -19,5 +20,7 @@
     "webpack": "^4.25.1",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@kalarrs/aws-util": "^1.0.0"
+  }
 }

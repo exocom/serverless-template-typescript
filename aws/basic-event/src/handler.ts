@@ -1,4 +1,4 @@
-import {ScheduleEventHandler} from '../../libs/lambda-util/lambda-util';
+import {ScheduleEventHandler} from '@kalarrs/aws-util';
 import {MongoClient, UnorderedBulkOperation} from 'mongodb';
 import moment = require('moment');
 
