@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt-nodejs';
 import mongoose from 'mongoose';
 import {User} from '../user';
-import {transformId, removeVersionKey} from '../../../../libs/mongoose-util/mongoose-util';
+import {transformId, removeVersionKey} from '@kalarrs/mongoose-util';
 
 export type UserDocument = mongoose.Document & User;
 
