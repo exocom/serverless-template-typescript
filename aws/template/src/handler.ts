@@ -1,6 +1,7 @@
-import {ScheduleEventHandler} from '@kalarrs/aws-util';
+import {AmazonConnectHandler, ScheduleEventHandler} from '@kalarrs/aws-util';
 import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogsHandler, CognitoUserPoolTriggerHandler} from "aws-lambda";
 
+// export const handler: AmazonConnectHandler = async (event, context) => {
 // export const handler: DynamoDBStreamHandler = async (event, context) => {
 // export const handler: S3Handler = async (event, context) => {
 // export const handler: ScheduleEventHandler = async (event, context) => {
