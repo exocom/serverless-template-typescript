@@ -1,5 +1,5 @@
 {
-  "name": "basic-crud-api-typescript",
+  "name": "sqs-typescript",
   "private": true,
   "version": "1.0.0",
   "main": "handler.js",
@@ -9,13 +9,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@kalarrs/serverless-local-dev-server": "https://github.com/kalarrs/serverless-local-dev-server#sqs-events",
-    "@types/node": "^10.5.3",
+    "@kalarrs/serverless-local-dev-server": "^1.1.7",
+    "@kalarrs/serverless-project-utils": "^2.2.1",
+    "@types/aws-lambda": "^8.10.15",
+    "@types/node": "^10.12.3",
     "serverless-webpack": "^5.2.0",
-    "ts-loader": "^4.4.2",
-    "typescript": "^2.9.2",
-    "uglifyjs-webpack-plugin": "^1.2.7",
-    "webpack": "^4.16.2",
+    "ts-loader": "^5.3.0",
+    "webpack": "^4.25.1",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {}

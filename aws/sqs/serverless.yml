@@ -1,8 +1,8 @@
-service: "template-typescript"
+service: "sqs-typescript"
 
 plugins:
-- serverless-webpack
-- "@kalarrs/serverless-local-dev-server"
+  - serverless-webpack
+  - "@kalarrs/serverless-project-utils"
 
 provider:
   name: aws
@@ -10,6 +10,8 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
+  timeout: 10
+  memorySize: 128
 
   environment:
 #    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}

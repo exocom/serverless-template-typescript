@@ -1,4 +1,4 @@
-import {SQSHandler} from '../../libs/lambda-util/node_modules/@types/aws-lambda';
+import {SQSHandler} from 'aws-lambda';
 import {SQS} from 'aws-sdk';
 
 const sqs = new SQS();
