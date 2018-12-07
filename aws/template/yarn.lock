@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@kalarrs/aws-util@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kalarrs/aws-util/-/aws-util-1.0.0.tgz#5700988f1ef50a6e54b212b3d475f3608520266d"
-  integrity sha512-iZd/6dklxtFif9M9eUkcclG2Tc5NSf4tPIoh1OizO1bnu4snT+0MlnAcZv7UosbzRLKyFN+/X0rpt4upGOUHaw==
+"@kalarrs/aws-util@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@kalarrs/aws-util/-/aws-util-1.1.1.tgz#3054d9ed819a020005d0dd334d8ed0c1f96dbca0"
+  integrity sha512-yAI63ESnVIrjnn0mGpe6top/RSr5OB+/QTKHLLQ0Eo9yGcQMHaL2+SVx0Yb7iHziRwfItU5U+tLOyRxD3D5p5w==
 
 "@kalarrs/serverless-local-dev-server@^1.1.7":
   version "1.1.7"
