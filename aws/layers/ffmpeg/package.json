@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "sync": "node scripts/sync",
+    "deployDev": "sls deploy --stage=dev",
+    "deployProd": "sls deploy --stage=prod"
+  },
+  "devDependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "rimraf": "^2.6.2",
+    "tar-fs": "^1.16.3",
+    "targz": "^1.0.1"
+  }
+}
