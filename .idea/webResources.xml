@@ -17,6 +17,12 @@
             <path value="file://$PROJECT_DIR$/aws/template" />
             <path value="file://$PROJECT_DIR$/aws/libs/lambda-util" />
             <path value="file://$PROJECT_DIR$/aws/template/src" />
+            <path value="file://$PROJECT_DIR$/aws/template/local-server" />
+            <path value="file://$PROJECT_DIR$/aws/template/serverless-local-server" />
+            <path value="file://$PROJECT_DIR$/aws/layers/node-modules/src" />
+            <path value="file://$PROJECT_DIR$/aws/layers/node-modules" />
+            <path value="file://$PROJECT_DIR$/aws/layers/ffmpeg" />
+            <path value="file://$PROJECT_DIR$/aws/layers/gems" />
           </resourceRoots>
         </entryData>
       </entry>
