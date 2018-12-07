@@ -16,11 +16,12 @@
     "ts-loader": "^4.4.2",
     "ts-node": "^7.0.0",
     "typescript": "^2.9.2",
-    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.16.2",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@kalarrs/aws-util": "^1.0.0",
+    "@kalarrs/mongoose-util": "^1.0.0",
     "bcrypt-nodejs": "^0.0.3",
     "bson": "^3.0.2",
     "class-transformer": "^0.1.9",
