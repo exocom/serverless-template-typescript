@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@kalarrs/serverless-local-dev-server": "^1.1.2",
+    "@kalarrs/serverless-local-dev-server": "^1.2.0",
     "@kalarrs/serverless-shared-api-gateway": "^1.0.8",
     "@types/node": "^10.5.3",
     "faker": "^4.1.0",
@@ -15,7 +15,7 @@
     "serverless-webpack": "^5.2.0",
     "ts-loader": "^4.4.2",
     "ts-node": "^7.0.0",
-    "typescript": "^2.9.2",
+    "typescript": "^3.2.2",
     "webpack": "^4.16.2",
     "webpack-node-externals": "^1.7.2"
   },
