@@ -1,0 +1,30 @@
+service: "sqs-typescript"
+
+plugins:
+  - serverless-webpack
+  - "@kalarrs/serverless-project-utils"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: ${file(../serverless.yml):provider.profile}
+  region: ${file(../serverless.yml):provider.region}
+  stage: ${file(../serverless.yml):provider.stage}
+  timeout: 10
+  memorySize: 128
+
+  environment:
+#    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
+
+functions:
+  handler:
+    handler: src/handler.handler
+    events:
+#    - sqs: arn:aws:sqs:region:XXXXXX:MyFirstQueue
+
+custom:
+  user: ${file(../serverless.yml):custom.user}
+  localDevPort: 5000
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true
