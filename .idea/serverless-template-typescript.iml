@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/aws/binary/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/aws/.serverless" />
+      <excludeFolder url="file://$MODULE_DIR$/aws/any-to-sqs/.serverless" />
+      <excludeFolder url="file://$MODULE_DIR$/aws/any-to-sqs/.webpack" />
       <excludeFolder url="file://$MODULE_DIR$/aws/base" />
       <excludeFolder url="file://$MODULE_DIR$/aws/basic-crud/.serverless" />
       <excludeFolder url="file://$MODULE_DIR$/aws/basic-crud/.webpack" />

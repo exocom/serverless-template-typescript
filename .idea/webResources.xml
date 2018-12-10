@@ -23,6 +23,8 @@
             <path value="file://$PROJECT_DIR$/aws/layers/node-modules" />
             <path value="file://$PROJECT_DIR$/aws/layers/ffmpeg" />
             <path value="file://$PROJECT_DIR$/aws/layers/gems" />
+            <path value="file://$PROJECT_DIR$/aws/any-to-sqs" />
+            <path value="file://$PROJECT_DIR$/aws/any-to-sqs/src" />
           </resourceRoots>
         </entryData>
       </entry>

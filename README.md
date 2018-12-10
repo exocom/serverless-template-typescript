@@ -1,27 +1,9 @@
 ## AWS
 
+To use these templates simply install the @kalarrs/cli.
 
-### Generic Templates
+`yarn global add @kalarrs/cli`
 
-Empty
-`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/template --path myService`
+Then run project create. You will prompted to pick from the templates located in the aws folder.
 
-### JSON API
-
-In Memory DB
-`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/basic-crud --path myService`
-
-MongoDB
-`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/mongo --path myService`
-
-
-### Binary API
-
-Audio Files from Polly
-`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/binary --path myService`
-
-
-### Schedule
-
-Once a Day
-`serverless create --template-url https://github.com/kalarrs/serverless-template-typescript/tree/master/aws/basic-event --path myService`
+`kalarrs project create` -or- `kls project create`
