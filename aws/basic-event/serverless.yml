@@ -1,9 +1,8 @@
-service:
-  name: "basic-event-typescript"
+service: "basic-event-typescript"
 
 plugins:
   - serverless-webpack
-  - "@kalarrs/serverless-local-dev-server"
+  - "@kalarrs/serverless-project-utils"
 
 provider:
   name: aws
@@ -11,6 +10,8 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
+  timeout: 10
+  memorySize: 128
 
   environment:
       MONGODB_URI: ${env:MONGODB_URI, file(../serverless.yml):provider.environment.MONGODB_URI}
@@ -23,7 +24,7 @@ functions:
 
 custom:
   user: ${file(../serverless.yml):custom.user}
-  localDevPort: 5001
+  localDevPort: 5000
   webpack:
     webpackConfig: "webpack.config.js"
     includeModules: true

@@ -2,7 +2,7 @@ service: "basic-crud-api-typescript"
 
 plugins:
   - serverless-webpack
-  - "@kalarrs/serverless-local-dev-server"
+  - "@kalarrs/serverless-project-utils"
   - "@kalarrs/serverless-shared-api-gateway"
 
 provider:
@@ -11,6 +11,8 @@ provider:
   profile: ${file(../serverless.yml):provider.profile}
   region: ${file(../serverless.yml):provider.region}
   stage: ${file(../serverless.yml):provider.stage}
+  timeout: 10
+  memorySize: 128
   apiGatewayRestApiName: ${file(../serverless.yml):provider.apiGatewayRestApiName}
 
   environment:

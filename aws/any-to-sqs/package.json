@@ -1,5 +1,5 @@
 {
-  "name": "template-typescript",
+  "name": "any-to-sqs",
   "private": true,
   "version": "1.0.0",
   "main": "src/handler.js",

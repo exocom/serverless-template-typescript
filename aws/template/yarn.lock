@@ -7,12 +7,13 @@
   resolved "https://registry.yarnpkg.com/@kalarrs/aws-util/-/aws-util-1.1.1.tgz#3054d9ed819a020005d0dd334d8ed0c1f96dbca0"
   integrity sha512-yAI63ESnVIrjnn0mGpe6top/RSr5OB+/QTKHLLQ0Eo9yGcQMHaL2+SVx0Yb7iHziRwfItU5U+tLOyRxD3D5p5w==
 
-"@kalarrs/serverless-local-dev-server@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.1.7.tgz#350790873f394f18dc7178e681213b31bed3ecd4"
-  integrity sha512-7xiwYAN4tNBCmjY66z33YGT3SeEcEqyp+gmD0Wpk15y8RXtWbAfa+vc+CESWPZmqhIQLG0O2oaMRMO8SUb12ug==
+"@kalarrs/serverless-local-dev-server@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kalarrs/serverless-local-dev-server/-/serverless-local-dev-server-1.2.0.tgz#4478954d132ebeb206dc926f183d22d5b9d42107"
+  integrity sha512-rXVUIsQdcJAcxRUR0+7MD53y/yD7StehJnq2I+yC31u8yLa5+0rf7Sk4JdgR48xfwvaE0wTf1pFRud6HAOq3tg==
   dependencies:
     body-parser "^1.18.3"
+    cors "^2.8.5"
     cronstrue "^1.58.0"
     dotenv "^6.1.0"
     express "^4.16.4"
@@ -1024,6 +1025,14 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
+cors@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+  integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+  dependencies:
+    object-assign "^4"
+    vary "^1"
+
 crc32-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/crc32-stream/-/crc32-stream-2.0.0.tgz#e3cdd3b4df3168dd74e3de3fbbcb7b297fe908f4"
@@ -1898,7 +1907,7 @@ gulp-cli@^2.0.0:
     v8flags "^3.0.1"
     yargs "^7.1.0"
 
-gulp@gulpjs/gulp#v4.0.0-alpha.3:
+"gulp@github:gulpjs/gulp#v4.0.0-alpha.3":
   version "4.0.0-alpha.3"
   resolved "https://codeload.github.com/gulpjs/gulp/tar.gz/057df5963034eb6426d99650abba15e4d912b0b7"
   dependencies:
@@ -2891,7 +2900,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -4139,6 +4148,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.2.tgz#fe8101c46aa123f8353523ebdcf5730c2ae493e5"
+  integrity sha512-VCj5UiSyHBjwfYacmDuc/NOk4QQixbE+Wn7MFJuS0nRuPQbof132Pw4u53dm264O8LPc2MVsc7RJNml5szurkg==
+
 uglify-es@^3.3.4:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/uglify-es/-/uglify-es-3.3.9.tgz#0c1c4f0700bed8dbc124cdb304d2592ca203e677"
@@ -4310,7 +4324,7 @@ value-or-function@^3.0.0:
   resolved "https://registry.yarnpkg.com/value-or-function/-/value-or-function-3.0.0.tgz#1c243a50b595c1be54a754bfece8563b9ff8d813"
   integrity sha1-HCQ6ULWVwb5Up1S/7OhWO5/42BM=
 
-vary@~1.1.2:
+vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
