@@ -13,6 +13,28 @@ import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogs
 // };
 
 /*
+  API Gateway Simple Example:
+ */
+// import {ApiGatewayHandler, ApiGatewayUtil} from '@kalarrs/aws-util';
+//
+// const apiGatewayUtil = new ApiGatewayUtil();
+//
+// export const handler: ApiGatewayHandler = async (event) => {
+//   const {queryStringParameters, pathParameters} = event;
+//   const body = JSON.parse(event.body);
+//
+//   const data = {
+//     queryStringParameters,
+//     pathParameters,
+//     body,
+//     message: 'Thanks for using @kalarrs!'
+//   };
+//   return apiGatewayUtil.sendJson({body: {data}});
+// };
+
+
+/*
+  API Gateway Complex Example:
   API Gateway data comes in on the request body, query string, and path parameters.
 
   Recommend:
@@ -30,9 +52,9 @@ import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogs
 
 // import {deserialize, plainToClass} from 'class-transformer'; // Recommend
 // import {validate} from 'class-validator';  // Optional
-// import {ApiGatewayHandler, LambdaUtil} from '@kalarrs/aws-util';
+// import {ApiGatewayHandler, ApiGatewayUtil} from '@kalarrs/aws-util';
 //
-// const lambdaUtil = new LambdaUtil();
+// const apiGatewayUtil = new ApiGatewayUtil();
 //
 // class QueryStringParameters {}
 // class Body {}
@@ -48,15 +70,15 @@ import {DynamoDBStreamHandler, S3Handler, SNSHandler, SQSHandler, CloudWatchLogs
 //   const pathErrors = await validate(pathParameters) || [];
 //
 //   if (queryErrors.length || bodyErrors.length || pathErrors.length) {
-//     const errors = [...queryErrors, ...bodyErrors, ...pathErrors].map((err) => {
-//       return {
-//         type: 'Validation',
-//         message: err && err.message || err
-//       };
-//     });
-//     return lambdaUtil.apiResponseJson({statusCode: 400, body: {errors}});
+//     const validation = [...queryErrors, ...bodyErrors, ...pathErrors];
+//     const error = {
+//       type: 'Validation',
+//       message: 'Failed validation',
+//       validation
+//     };
+//     return apiGatewayUtil.sendJson({statusCode: 400, body: {error}});
 //   }
 //
-//   const data = 'Thanks for using @kalarrs!';
-//   return lambdaUtil.apiResponseJson({body: {data}});
+//   const buffer = new Buffer('Thanks for using @kalarrs!');
+//   return apiGatewayUtil.sendBinary({body: buffer});
 // };
