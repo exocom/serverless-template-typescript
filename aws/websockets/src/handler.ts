@@ -28,7 +28,7 @@ export interface APIGatewayWebsocketEventRequestContext {
   connectionId: string,
   domainName: string,
   error: string,
-  eventType: 'CONNECT' | 'DISCONNECT' | 'DEFAULT',
+  eventType: 'CONNECT' | 'DISCONNECT' | 'DEFAULT' | 'MESSAGE',
   extendedRequestId: string;
   identity: {
     accessKey: string | null;
@@ -74,6 +74,14 @@ export const handler: APIGatewayProxyHandler<APIGatewayProxyEvent<APIGatewayWebs
     case 'DISCONNECT':
       console.log(`Lost connection! Connection ID: ${connectionId}`);
       return {statusCode: 200, body: 'Disconnected'};
+    case 'MESSAGE':
+      const {body, isBase64Encoded} = event;
+      if (typeof body === 'string') {
+        console.log(`Message received! Message: ${isBase64Encoded ? Buffer.from(body, 'base64') : body}`);
+      } else {
+        console.log(`Binary data received!`);
+      }
+      return {statusCode: 200, body: null};
     case 'DEFAULT':
       const apigwManagementApi = new ApiGatewayManagementApi({
         apiVersion: '2018-11-29',
