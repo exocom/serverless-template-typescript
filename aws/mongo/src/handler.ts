@@ -6,7 +6,9 @@ import {deserialize, plainToClass} from 'class-transformer';
 import {UserCreateRequest, UserGetParamsRequest} from './models/requests/user.request';
 import {validate} from 'class-validator';
 
-mongoose.connect(process.env.MONGODB_URI);
+const {MONGODB_URI} = process.env;
+
+mongoose.connect(MONGODB_URI);
 const apiGatewayUtil = new ApiGatewayUtil();
 
 // GET /api/users
