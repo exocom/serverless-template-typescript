@@ -14,7 +14,7 @@ provider:
   memorySize: 128
 
   environment:
-#    CHANGE_VALUE: ${env:CHANGE_VALUE, file(../serverless.yml):provider.environment.CHANGE_VALUE}
+#    SQS_URL: ${env:SQS_URL, file(../serverless.yml):provider.environment.SQS_URL}
 
 functions:
   handler:
